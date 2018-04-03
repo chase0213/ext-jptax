@@ -1,0 +1,21 @@
+{
+  "name": "JPTax Extension",
+  "description": "extension for National Tax Agency Japan Websites",
+  "version": "1.0",
+  "manifest_version": 2,
+  "permissions": ["tabs", "history", "webNavigation", "storage"],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "images/ext-jptax_icon.png"
+  },
+  "icons": {
+    "16": "images/ext-jptax_icon.png",
+    "32": "images/ext-jptax_icon.png",
+    "64": "images/ext-jptax_icon.png",
+    "128": "images/ext-jptax_icon.png"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}

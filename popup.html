@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang='ja'>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+      #old-url-input, #search-input {
+        border: none;
+        border-bottom: 1px solid #c0c0c0;
+        font-size: .9rem;
+        line-height: 1.2em;
+        margin: 0 auto;
+        outline: none;
+        width: 100%;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        width: 300px;
+        height: 450px;
+        font-family: Avenir , "Open Sans" , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
+        font-size: 16px;
+      }
+
+      h1 {
+        background: #f0f0f0;
+        box-shadow: 0 1px 3px 0 #808080;
+        font-size: 1.2rem;
+        margin: 0;
+        padding: .4em;
+      }
+
+      button {
+        border-radius: 4px;
+        cursor: pointer;
+        outline: none;
+        height: 30px;
+        width: 100%;
+      }
+
+      button:hover {
+        box-shadow: 0 1px 3px 0 #808080;
+      }
+
+      .redirector__container, .search__container {
+        padding: 0 16px;
+      }
+
+      .input__container {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-top: .8em;
+        margin-bottom: 1em;
+        width: 100%;
+      }
+
+      .result-item {
+        cursor: pointer;
+        font-size: .8rem;
+        color: #808080;
+        padding: .2em 0;
+      }
+
+      .result-item:hover {
+        color: rgb(51, 103, 214);
+      }
+
+      .error-message {
+        color: #D8000C;
+        font-size: .8em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>JPTax Extension</h1>
+
+    <div class="redirector__container">
+      <h4>対象URL</h4>
+      <div class="input__container">
+        <input id='old-url-input' type='url' placeholder="見れないURL..." />
+      </div>
+      <button id="redirector">新サイトを見る</button>
+
+      <p id="redirector-alert" class="error-message"></p>
+    </div>
+
+    <div class="search__container">
+      <h4>キーワード検索</h4>
+      <div class="input__container">
+        <input id="search-input" type='text' placeholder="確定申告、納税、個人事業主..." />
+      </div>
+      <button id="search-button">検索する</button>
+
+      <div id="search-result__container">
+      </div>
+
+      <p id="searcher-alert" class="error-message"></p>
+    </div>
+
+    <script src="scores.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

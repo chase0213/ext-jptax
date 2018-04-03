@@ -1,0 +1,6 @@
+# ignore package file
+ext-jptax.zip
+
+# for mac
+.DS_Store
+
