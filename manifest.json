@@ -1,7 +1,7 @@
 {
   "name": "JPTax Extension",
   "description": "Chrome extension for National Tax Agency Japan Websites",
-  "version": "1.3",
+  "version": "2.0",
   "manifest_version": 2,
   "permissions": ["tabs", "webNavigation", "storage"],
   "browser_action": {
