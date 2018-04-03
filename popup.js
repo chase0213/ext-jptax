@@ -1,8 +1,9 @@
 // upper is higher in priority
 const replacer = {
-  'www.nta.go.jp/taxanswer/': 'www.nta.go.jp/taxes/shiraberu/taxanswer/',
-  'https://www.nta.go.jp/zeimokubetsu/': 'https://www.nta.go.jp/taxes/shiraberu/zeimokubetsu/',
-  'https://www.nta.go.jp/tetsuzuki/': 'https://www.nta.go.jp/taxes/tetsuzuki/',
+  'www\.nta\.go\.jp\/shiraberu\/ippanjoho\/pamph\/inshi\/tebiki\/.*\.htm': 'www.nta.go.jp/publication/pamph/01.htm',
+  'www\.nta\.go\.jp\/taxanswer\/': 'www.nta.go.jp/taxes/shiraberu/taxanswer/',
+  'www\.nta\.go\.jp\/zeimokubetsu\/': 'www.nta.go.jp/taxes/shiraberu/zeimokubetsu/',
+  'www\.nta\.go\.jp\/tetsuzuki\/shinkoku\/': 'www.nta.go.jp/taxes/tetsuzuki/shinsei/shinkoku/',
 };
 
 // the number of results to be shown
@@ -43,7 +44,7 @@ let replaceURL = function(oldURL) {
   for (url in replacer) {
     let regexp = new RegExp(url);
     if (oldURL.match(regexp)) {
-      return oldURL.replace(url, replacer[url]);
+      return oldURL.replace(regexp, replacer[url]);
     }
   }
 
