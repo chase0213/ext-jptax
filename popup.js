@@ -31,7 +31,11 @@ let searcherError = document.getElementById('searcher-alert');
 let currentRequestURL;
 chrome.storage.sync.get(['currentRequestURL'], function(data) {
   currentRequestURL = data['currentRequestURL'];
-  oldURLInput.value = currentRequestURL;
+  if (currentRequestURL) {
+    oldURLInput.value = currentRequestURL;
+  } else {
+    oldURLInput.value = '';
+  }
 });
 
 // replace url from the old nta website with the new one
