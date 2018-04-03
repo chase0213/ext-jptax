@@ -1,10 +1,3 @@
-// upper is higher in priority
-const replacer = {
-  'www\.nta\.go\.jp\/shiraberu\/ippanjoho\/pamph\/inshi\/tebiki\/.*\.htm': 'www.nta.go.jp/publication/pamph/01.htm',
-  'www\.nta\.go\.jp\/taxanswer\/': 'www.nta.go.jp/taxes/shiraberu/taxanswer/',
-  'www\.nta\.go\.jp\/zeimokubetsu\/': 'www.nta.go.jp/taxes/shiraberu/zeimokubetsu/',
-  'www\.nta\.go\.jp\/tetsuzuki\/shinkoku\/': 'www.nta.go.jp/taxes/tetsuzuki/shinsei/shinkoku/',
-};
 
 // the number of results to be shown
 const MAX_RESULT_COUNT = 5;
@@ -28,28 +21,11 @@ let searchButton = document.getElementById('search-button');
 let searchResultContainer = document.getElementById('search-result__container');
 let searcherError = document.getElementById('searcher-alert');
 
-// load url user visited currently
-let currentRequestURL;
-chrome.storage.sync.get(['currentRequestURL'], function(data) {
-  currentRequestURL = data['currentRequestURL'];
-  if (currentRequestURL) {
-    oldURLInput.value = currentRequestURL;
-  } else {
-    oldURLInput.value = '';
-  }
+// set url to input form
+chrome.storage.sync.get(['requestURL'], function(data) {
+  let url = data.requestURL;
+  oldURLInput.value = url;
 });
-
-// replace url from the old nta website with the new one
-let replaceURL = function(oldURL) {
-  for (url in replacer) {
-    let regexp = new RegExp(url);
-    if (oldURL.match(regexp)) {
-      return oldURL.replace(regexp, replacer[url]);
-    }
-  }
-
-  return null;
-}
 
 // utility to calculate ngram
 let ngram = function(words, n) {
@@ -87,16 +63,16 @@ let embedResult = function(results, limit) {
 
 // handle onclick event of redirect button
 redirector.onclick = function(element) {
-  let newURL = replaceURL(currentRequestURL);
 
   // clear error message
   redirectorError.innerText = '';
 
-  if (newURL) {
-    chrome.tabs.update(null, {url: newURL});
-  } else {
-    redirectorError.innerText = ERROR_REDIRECTION_NOT_FOUND;
-  }
+  chrome.storage.sync.get(['requestURL'], function(data) {
+    let url = data.requestURL;
+    if (!redirectToNewPage(url)) {
+      redirectorError.innerText = ERROR_REDIRECTION_NOT_FOUND;
+    }
+  });
 }
 
 // handle onclick event of search button

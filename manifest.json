@@ -15,7 +15,7 @@
     "128": "ext-jptax_icon_128x128.png"
   },
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["redirector.js", "background.js"],
     "persistent": false
   }
 }
