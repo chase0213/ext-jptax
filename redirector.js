@@ -1,5 +1,6 @@
 // upper is higher in priority
 const replacer = {
+  'www\.nta\.go\.jp\/kohyo\/tokei\/': 'www.nta.go.jp/publication/statistics/',
   'www\.nta\.go\.jp\/tetsuzuki\/shinkoku\/shotoku\/kakutei\.htm': 'www.nta.go.jp/taxes/shiraberu/shinkoku/kakutei.htm',
   'www\.nta\.go\.jp\/taxanswer\/sozoku\/souzo[0-9]+\.htm': 'www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/souzoku.htm',
   'www\.nta\.go\.jp\/taxanswer\/zoyo\/zouyo[0-9]+\.htm': 'www.nta.go.jp/taxes/shiraberu/taxanswer/zoyo/zouyo.htm',
